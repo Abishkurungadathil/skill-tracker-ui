@@ -1,0 +1,49 @@
+
+
+<div>
+    <h3>Search Employee</h3>
+    <form novalidate [formGroup]="form">
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <label class =" text-primary" for="search-by">Search By </label>
+          <select class=" dropdown" formControlName="searchBy">
+            <option value="name">Name</option>
+            <option value="associateid">Assocate Id</option>
+            <option value="skill">Skill</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3 col-sm-3">
+          <label class =" text-primary" for="search-value">Search value      </label>
+          <input id="searchValue" type="text" formControlName="searchValue">
+        </div>
+  
+        <div class="col-md-3 col-sm-3">
+          <button class="btn btn-primary" (click)="search(form.value)">    Search    </button>
+        </div>
+      </div>
+  
+    </form><br />
+    <table class="table table-hover table-striped" border="1">
+      <thead class="bg-dark text-white">
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Associate Id</th>
+              <th >Email</th>
+              <th >Mobile</th>
+              <th  >Skills</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let employee of employees">
+              <td>{{employee.id}}</td>
+              <td>{{employee.name}}</td>
+              <td>{{employee.associateId}}</td>
+              <td>{{employee.email}}</td>
+              <td>{{employee.mobile}}</td>
+              <td>{{employee.skill | json}}</td>         
+          </tr>
+      </tbody>
+  </table>
+  </div>
